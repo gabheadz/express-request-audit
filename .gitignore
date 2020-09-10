@@ -41,3 +41,5 @@ jspm_packages
 
 # IntelliJ files
 /.idea
+
+.DS_Store
