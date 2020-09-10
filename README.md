@@ -163,9 +163,9 @@ app.use(audit({
 
 [npm-image]: https://img.shields.io/npm/v/express-request-audit.svg?style=flat
 [npm-url]: https://npmjs.org/package/express-request-audit
-[travis-image]: https://travis-ci.org/github/gabheadz/express-request-audit.svg?branch=master
-[travis-url]: https://travis-ci.org/github/gabheadz/express-request-audit
-[coveralls-image]: https://coveralls.io/github/gabheadz/express-request-audit/badge.svg?branch=master
+[travis-image]: https://travis-ci.org/gabheadz/express-request-audit.svg?branch=master
+[travis-url]: https://travis-ci.org/gabheadz/express-request-audit
+[coveralls-image]: https://coveralls.io/repos/github/gabheadz/express-request-audit/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/gabheadz/express-request-audit?branch=master
 [downloads-image]: http://img.shields.io/npm/dm/express-request-audit.svg?style=flat
 [downloads-url]: https://npmjs.org/package/express-request-audit
