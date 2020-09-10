@@ -47,7 +47,7 @@ the `express-request-audit` accepts the following properties in the options obje
 
 #### auditor
 
-The auditor function that will process the request/response stream of events. 
+The auditor function that will act as s sink for the request/response stream of events. 
 
 #### doubleAudit
 
