@@ -1,7 +1,7 @@
 {
-  "name": "express-requests-logger",
-  "version": "3.0.2",
-  "description": "Middleware for logging request/responses in Express apps",
+  "name": "express-request-audit",
+  "version": "1.0.0",
+  "description": "Middleware for auditing request/responses in Express apps",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/_mocha -- --recursive ./test/*-test.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ugolas/express-request-logger.git"
+    "url": "git+https://github.com/gabheadz/express-request-audit.git"
   },
   "keywords": [
     "logs",
@@ -21,9 +21,9 @@
   "author": "Zooz",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ugolas/express-request-logger/issues"
+    "url": "https://github.com/gabheadz/express-request-audit/issues"
   },
-  "homepage": "https://github.com/ugolas/express-request-logger#readme",
+  "homepage": "https://github.com/gabheadz/express-request-audit#readme",
   "nyc": {
     "check-coverage": true,
     "report-dir": "./coverage",

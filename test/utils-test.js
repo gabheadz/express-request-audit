@@ -179,49 +179,5 @@ describe('utils tests', function () {
             should(res).eql(false);
         });
     });
-    describe('When calling getLogLevel', () => {
-        it('Should return info if levels is undefined', () => {
-            let result = utils.getLogLevel(200, undefined);
-            should(result).eql('info');
-        });
-        it('Should return info if levels is empty array', () => {
-            let result = utils.getLogLevel(200, []);
-            should(result).eql('info');
-        });
-        it('Should return info if exact match but levelMap value is not valid level', () => {
-            let result = utils.getLogLevel(200, { '200': 'not-valid' });
-            should(result).eql('info');
-        })
-        it('Should return correct exact match of status with level map', () => {
-            let result = utils.getLogLevel(200, { '200': 'error' });
-            should(result).eql('error');
-        });
-        it('Should return correct exact match if group is configured as well', () => {
-            let result = utils.getLogLevel(401, {
-                '200': 'error',
-                '4xx': 'debug',
-                '401': 'error',
-                '500': 'error'
-            });
-            should(result).eql('error');
-        })
-        it('Should fallback to status group if exact match not found', () => {
-            let result = utils.getLogLevel(404, {
-                '200': 'error',
-                '4xx': 'debug',
-                '401': 'error',
-                '500': 'error'
-            });
-            should(result).eql('debug');
-        })
-        it('Should fallback to default info level if no match is found', () => {
-            let result = utils.getLogLevel(302, {
-                '200': 'error',
-                '4xx': 'debug',
-                '401': 'error',
-                '500': 'error'
-            });
-            should(result).eql('info');
-        })
-    });
+    
 });
