@@ -38,7 +38,6 @@ describe('logger-helpers tests', function () {
         clock = sinon.useFakeTimers();
         shouldAuditURLStub = sandbox.stub(utils, 'shouldAuditURL');
         maskJsonSpy = sandbox.spy(utils, 'maskJson');
-
     });
 
     beforeEach(function () {
@@ -76,7 +75,7 @@ describe('logger-helpers tests', function () {
             }
         });
 
-        options.auditor = function () { };
+        options.auditor = function (event) { };
 
         auditorStub = sandbox.stub(options, 'auditor');
 
@@ -170,19 +169,15 @@ describe('logger-helpers tests', function () {
             });
             it('Should add to audit the additional audit details', function () {
                 shouldAuditURLStub.returns(true);
-
                 loggerHelper.auditRequest(request, options);
                 sinon.assert.calledOnce(auditorStub);
                 sinon.assert.calledWith(auditorStub, { request: expectedAuditRequest, field1: 'field1', field2: 'field2', 'utc-timestamp': expectedUTCTimestamp, 'millis-timestamp': expectedMillisTimestamp, stage: 'start' });
             });
-
             it('Should not add to audit the additional audit details if its an empty object', function () {
                 request.additionalAudit = {};
                 delete expectedAuditRequest.field1;
                 delete expectedAuditRequest.field2;
-
                 shouldAuditURLStub.returns(true);
-
                 loggerHelper.auditRequest(request, options);
                 sinon.assert.calledOnce(auditorStub);
                 sinon.assert.calledWith(auditorStub, { stage: 'start', request: expectedAuditRequest, 'utc-timestamp': expectedUTCTimestamp, 'millis-timestamp': expectedMillisTimestamp });
@@ -282,6 +277,26 @@ describe('logger-helpers tests', function () {
 
 
             })
+        });
+        describe('And no query params are sent', function () {
+            it('Should not log any query param', function () {
+                shouldAuditURLStub.returns(true);
+
+                request.query = undefined;
+
+                loggerHelper.auditRequest(request, options);
+                sinon.assert.calledOnce(auditorStub);
+
+                let expected = _.cloneDeep(getExpectedAuditRequest());
+                expected.query = {};
+
+                sinon.assert.calledWithMatch(auditorStub, {
+                    stage: 'start', 
+                    request: expected,
+                    'utc-timestamp': expectedUTCTimestamp,
+                    'millis-timestamp': expectedMillisTimestamp
+                });
+            });
         });
         describe('And exclude headers contains an header to exclude', function () {
             var headerToExclude = 'header-to-exclude';

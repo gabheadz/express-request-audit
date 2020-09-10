@@ -42,6 +42,7 @@ describe('express-logger tests', function(){
     describe('When calling express-logger module', function(){
         it('should correctly setup', function(){
             let options = {
+                auditor: () => {},
                 request: {
                     audit: false,
                     maskBody: [10],
@@ -63,6 +64,7 @@ describe('express-logger tests', function(){
             };
 
              let expectedOptions = {
+                    auditor: () => {},
                     request: {
                         audit: false,
                         maskBody: [10],
