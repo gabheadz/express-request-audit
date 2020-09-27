@@ -25,6 +25,7 @@ var query = {
     q1: 'something',
     q2: 'fishy'
 };
+var clientIp = '192.168.1.1';
 
 var expectedUTCTimestamp = '1970-01-01T00:00:00.000Z';
 var expectedMillisTimestamp = 0;
@@ -72,7 +73,8 @@ describe('logger-helpers tests', function () {
             headers: {
                 'content-type': 'application/json',
                 header1: 'some-value'
-            }
+            },
+            ip: clientIp,
         });
 
         options.auditor = function (event) { };
@@ -98,6 +100,7 @@ describe('logger-helpers tests', function () {
             url_params: params,
             timestamp: startTime.toISOString(),
             timestamp_ms: startTime.valueOf(),
+            ip: clientIp,
             body: JSON.stringify(body),
         };
         getExpectedAuditRequest = () => expectedAuditRequest;
@@ -721,7 +724,8 @@ describe('logger-helpers tests', function () {
                         headers: NA,
                         timestamp: NA,
                         timestamp_ms: NA,
-                        body: NA
+                        body: NA,
+                        ip: undefined,
                     },
                     response: {
                         status_code: NA,
